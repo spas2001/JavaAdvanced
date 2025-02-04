@@ -95,7 +95,7 @@ public class ArrayAndSweetBox {
             totalPrice += sweetItem.getPrice();
             System.out.println(sweetItem.toString());
         }
-        System.out.println("\nОбщий вес подарка "+ sumWeight + ", общая стоимость "+ totalPrice);
+        System.out.printf("\nОбщий вес подарка %.2f, общая стоимость %.2f", sumWeight, totalPrice);
         return 0;
     }
 
