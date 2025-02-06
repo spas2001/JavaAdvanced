@@ -56,7 +56,7 @@ public class CalcOperationTest {
                 break;
         }
         System.out.printf("\nРезультат: %.4f", ldRes);
-        return;
+        sc.close();
     }
 
     /**
