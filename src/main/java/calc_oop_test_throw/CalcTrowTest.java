@@ -1,31 +1,48 @@
-package calc_oop_test;
+package calc_oop_test_throw;
 
-import calc_oop_test.operations.*;
+import calc_oop_test_throw.operations.*;
 
 import java.util.Scanner;
 
 /**
- * Java Advanced Example #4
+ * Java Advanced Example #6
  *
- * @author Булгаков В.В. 06.02.2025
- * Реализовать калькулятор с использованием принципов ООП
+ * @author Булгаков В.В. 08.02.2025
+ * 1. Реализовать калькулятор с использованием принципов ООП
  * При использовании общего интерфейса мы можем использовать множественные классы с единым методом
  * При наследовании из абстрактного класса мы можем перекрывать методы в наследниках
  * Для данного примера продемонстрируем использование общего интерфейса
- * @see calc_oop_test.operations.Operation
+ * @see calc_oop_test_throw.operations.Operation
+ *  2. Добавить обработку исключений в задание с ООП калькулятора (например, исключение может возникнуть при делении на ноль)
  */
-public class CalcOperationTest {
-    public static void main(String[] args) throws Exception {
+public class CalcTrowTest {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        double ldVar1;
+        double ldVar2;
         double ldRes = 0;
-        double ldVar1 = GetInputValue("Введите значение первой переменной: ", sc);
-        if (Double.isNaN(ldVar1)) {
+        try {
+             ldVar1 = GetInputValue("Введите значение первой переменной: ", sc);
+            if (Double.isNaN(ldVar1)) {
+                System.out.println("Некорректное значение");
+                return;
+            }
+        } catch (RuntimeException e) {
             System.out.println("Некорректное значение");
+            e.getCause();
+            e.getMessage();
             return;
         }
-        double ldVar2 = GetInputValue("Введите значение второй переменной: ", sc);
-        if (Double.isNaN(ldVar2)) {
+        try {
+             ldVar2 = GetInputValue("Введите значение второй переменной: ", sc);
+            if (Double.isNaN(ldVar2)) {
+                System.out.println("Некорректное значение");
+                return;
+            }
+        } catch (RuntimeException e) {
             System.out.println("Некорректное значение");
+            e.getCause();
+            e.getMessage();
             return;
         }
         String lsOper = GetInputOperator("Введите арифметическую операцию (+,-,/,*,%): ", sc);
@@ -36,23 +53,46 @@ public class CalcOperationTest {
         switch (lsOper) {
             case "+":
                 Operation opSum = new OperationSum();
-                ldRes = opSum.calculate(ldVar1, ldVar2);
+                try {
+                    ldRes = opSum.calculate(ldVar1, ldVar2);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "-":
                 Operation opMinus = new OperationMinus();
-                ldRes = opMinus.calculate(ldVar1, ldVar2);
+                try {
+                    ldRes = opMinus.calculate(ldVar1, ldVar2);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "*":
                 Operation opMulti = new OperationMulti();
-                ldRes = opMulti.calculate(ldVar1, ldVar2);
+                try {
+                    ldRes = opMulti.calculate(ldVar1, ldVar2);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "/":
+                try {
                 Operation opDiv = new OperationDiv();
-                ldRes = opDiv.calculate(ldVar1, ldVar2);
+                ldRes = opDiv.calculate(ldVar1, ldVar2);}
+                catch (RuntimeException e) {
+                    e.getCause();
+                    e.getMessage();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "%":
                 Operation opMod = new OperationMod();
-                ldRes = opMod.calculate(ldVar1,ldVar2);
+                try {
+                    ldRes = opMod.calculate(ldVar1, ldVar2);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
         System.out.printf("\nРезультат: %.4f", ldRes);

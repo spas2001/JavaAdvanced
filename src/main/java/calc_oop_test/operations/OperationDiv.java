@@ -1,6 +1,7 @@
 package calc_oop_test.operations;
+
 /**
- * @author  Булгаков В.В.
+ * @author Булгаков В.В.
  * Интерфейс математическoй операции деления
  */
 public class OperationDiv implements Operation {

@@ -1,4 +1,4 @@
-package calc_oop_test.operations;
+package calc_oop_test_throw.operations;
 
 /**
  * @author  Булгаков В.В.
@@ -6,5 +6,5 @@ package calc_oop_test.operations;
  */
 
 public interface Operation {
-    public double calculate(double ldVar1, double ldVar2) throws Exception;
+    public double calculate(double a, double b) throws Exception;
 }
