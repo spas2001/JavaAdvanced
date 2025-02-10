@@ -6,7 +6,7 @@ import org.junit.Test;
  * Java Advanced Example #7
  *
  * @author Булгаков В.В. 10.02.2025
- * 1. Реализовать покрытие калькулятора unit-тестами
+ * Реализовать покрытие калькулятора unit-тестами
  */
 
 public class TestsCalcThrow {
