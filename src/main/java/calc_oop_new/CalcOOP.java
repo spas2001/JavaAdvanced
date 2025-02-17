@@ -47,11 +47,11 @@ public class CalcOOP {
         try {
             ldRes = op1.calculate(ldVar1, ldVar2);
             //Результат NaN и Infinity не порождает у меня исключения (программа устойчиво работает) пришлось сделать исключения принудительно
-            if (Double.isNaN(ldRes)) {
-                throw (new Exception("NAN"));
-            } else if (Double.isInfinite(ldRes)) {
-                throw (new Exception("INFINITE"));
-            }
+//            if (Double.isNaN(ldRes)) {
+//                throw (new Exception("NAN"));
+//            } else if (Double.isInfinite(ldRes)) {
+//                throw (new Exception("INFINITE"));
+//            }
             System.out.printf("\nРезультат: %.4f", ldRes);
         } catch (Exception e) {
             e.printStackTrace();

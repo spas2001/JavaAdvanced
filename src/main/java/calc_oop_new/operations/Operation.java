@@ -91,15 +91,8 @@ public class Operation {
         //Сделаем отдельную функцию считывания с клавиатуры
         double ldRes;
         System.out.print(prompt);
-        try {
-            ldRes = scanner.nextDouble();
-        } catch (Exception e) {
-            //System.out.println("Некорректное значение  переменной");
-            e.getCause();
-            e.getMessage();
-            throw new IllegalStateException("Unexpected value: " );
-        }
-        return ldRes;
+           ldRes = scanner.nextDouble();
+         return ldRes;
     }
 
     /**
