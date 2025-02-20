@@ -50,7 +50,9 @@ public class CalcOOP {
                 default:
                     throw new IllegalStateException("Некорректное значение операции ");
             }
-
+            //Закрываем поток ввода
+            op1.opCloseScan();
+            //Вычисляем
             ldRes = op1.calculate(ldVar1, ldVar2);
             //Результат NaN и Infinity не порождает у меня исключения (программа устойчиво работает) пришлось сделать исключения принудительно
             if (Double.isNaN(ldRes)) {
