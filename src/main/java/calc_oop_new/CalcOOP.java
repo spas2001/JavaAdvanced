@@ -60,10 +60,13 @@ public class CalcOOP {
             } else if (Double.isInfinite(ldRes)) {
                 throw (new Exception("INFINITE"));
             }
+
             System.out.printf("\nРезультат: %.4f", ldRes);
         } catch (InputMismatchException im) {
             System.out.println("Некорректный параметр");
             im.printStackTrace();
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("Некорректное завершение программы");
             e.printStackTrace();
