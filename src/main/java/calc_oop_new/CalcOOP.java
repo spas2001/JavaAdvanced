@@ -1,8 +1,8 @@
 package calc_oop_new;
 
 import calc_oop_new.operations.*;
-
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 
 /**
@@ -17,43 +17,39 @@ import java.util.InputMismatchException;
 
 public class CalcOOP {
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
+        CalcGetValue cgl = new CalcGetValue(sc);
+        Operation op;
         double ldRes = 0, ldVar1, ldVar2;
         String lsOper = "";
-        Operation op = new Operation();
 
-//        if (op.opInit(sc) < 0) {
-//            return;
-//        }
+        ldVar1 = cgl.GetInputDouble("Введите значение первой переменной: ");
+        ldVar2 = cgl.GetInputDouble("Введите значение второй переменной: ");
+        lsOper = cgl.GetInputString("Введите арифметическую операцию (+,-,/,*,%): ");
         try {
-            ldVar1 = op.setVar("Введите значение первой переменной: ");
-            ldVar2 = op.setVar("Введите значение второй переменной: ");
-            Operation op1;
-            lsOper = op.setOper();
-            op.opCloseScan();
             switch (lsOper) {
                 case "+":
-                    op1 = new OperationSum();
+                    op = new OperationSum(ldVar1, ldVar2);
                     break;
                 case "-":
-                    op1 = new OperationMinus();
+                    op = new OperationMinus(ldVar1, ldVar2);
                     break;
                 case "*":
-                    op1 = new OperationMulti();
+                    op = new OperationMulti(ldVar1, ldVar2);
                     break;
                 case "/":
-                    op1 = new OperationDiv();
+                    op = new OperationDiv(ldVar1, ldVar2);
                     break;
                 case "%":
-                    op1 = new OperationMod();
+                    op = new OperationMod(ldVar1, ldVar2);
                     break;
                 default:
                     throw new IllegalStateException("Некорректное значение операции ");
             }
             //Закрываем поток ввода
-            op1.opCloseScan();
+            sc.close();
             //Вычисляем
-            ldRes = op1.calculate(ldVar1, ldVar2);
+            ldRes = op.getResult();
             //Результат NaN и Infinity не порождает у меня исключения (программа устойчиво работает) пришлось сделать исключения принудительно
             if (Double.isNaN(ldRes)) {
                 throw (new Exception("NAN"));

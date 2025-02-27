@@ -2,7 +2,8 @@ package calc_oop_new.operations;
 
 public class OperationDiv extends Operation {
 
-    public OperationDiv() {
+    public OperationDiv(double a, double b) {
+        super(a,b);
     }
 
     @Override
