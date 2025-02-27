@@ -11,8 +11,7 @@ public class OperationDiv extends Operation {
         if( b == 0 ) {
             throw new ArithmeticException("Деление на 0!");
         }
-        double result = a / b;
-        return result;
+        return a / b;
 
     }
 }

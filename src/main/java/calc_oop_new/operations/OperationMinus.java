@@ -7,7 +7,6 @@ public class OperationMinus extends Operation {
     @Override
     public double calculate(double a, double b) {
 
-        double result = a - b;
-        return result;
+        return a - b;
     }
 }
